@@ -3,9 +3,482 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Misteri Hati ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      .heartbeat {
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .float {
+        animation: floating 3s ease-in-out infinite;
+      }
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .blob {
+        animation: blob 7s linear infinite;
+      }
+      @keyframes blob {
+        0% {
+          border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+        }
+        50% {
+          border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+        }
+        100% {
+          border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+        }
+      }
+      .typewriter {
+        overflow: hidden;
+        border-right: 0.15em solid pink;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: 0.15em;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: pink;
+        }
+      }
+      .glow {
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073;
+        }
+        to {
+          box-shadow: 0 0 10px #fff, 0 0 20px #ff4da6, 0 0 30px #ff4da6, 0 0 40px #ff4da6;
+        }
+      }
+      .progress-bar {
+        height: 6px;
+        transition: width 0.5s ease;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body class="flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-500 transform hover:scale-[1.02] relative">
+      <!-- Floating Hearts Background -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-10 left-10 text-3xl text-pink-200 opacity-50 animate-float">❤️</div>
+        <div class="absolute top-20 right-16 text-4xl text-pink-200 opacity-50 animate-float" style="animation-delay: 1s">❤️</div>
+        <div class="absolute bottom-20 left-20 text-2xl text-pink-200 opacity-50 animate-float" style="animation-delay: 2s">❤️</div>
+        <div class="absolute bottom-10 right-10 text-3xl text-pink-200 opacity-50 animate-float" style="animation-delay: 1.5s">❤️</div>
+      </div>
+
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-pink-500 to-rose-500 py-6 px-6 text-center relative overflow-hidden">
+        <div class="absolute -top-10 -left-10 w-24 h-24 bg-pink-400 rounded-full opacity-20 blob"></div>
+        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-rose-600 rounded-full opacity-20 blob" style="animation-delay: 2s"></div>
+        <h1 class="text-3xl font-bold text-white relative z-10 animate__animated animate__fadeIn">Misteri Hati ❤️</h1>
+        <p class="text-pink-100 mt-2 relative z-10 animate__animated animate__fadeIn animate__delay-1s">Quiz khusus untuk seseorang yang spesial</p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="bg-gray-100 h-2">
+        <div id="quiz-progress" class="progress-bar bg-gradient-to-r from-pink-400 to-rose-500" style="width: 0%"></div>
+      </div>
+
+      <!-- Quiz Container -->
+      <div class="p-6 relative">
+        <!-- Intro Screen -->
+        <div id="intro-screen" class="text-center animate__animated animate__fadeIn">
+          <div class="heartbeat float inline-block text-6xl mb-4">💖</div>
+          <h2 class="text-2xl font-bold text-gray-800 typewriter">Hai <span id="crush-name" class="text-rose-500">Sayang</span>!</h2>
+          <p class="text-gray-600 mt-4 animate__animated animate__fadeIn animate__delay-2s">Aku punya sesuatu yang seru buat kamu...</p>
+          <p class="text-gray-600 mt-2 animate__animated animate__fadeIn animate__delay-3s">Quiz kecil dengan hadiah spesial di akhir! 😉</p>
+
+          <div class="mt-8 animate__animated animate__fadeIn animate__delay-4s">
+            <div class="mb-4">
+              <label for="name-input" class="block text-sm font-medium text-gray-700 mb-1">Silahkan Masukkan Nama Kamu</label>
+              <input type="text" id="name-input" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500" placeholder="Ketik nama kamu di sini" />
+            </div>
+            <button
+              onclick="startQuiz()"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl active:scale-95"
+            >
+              Mulai Petualangan 💫
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 1 -->
+        <div id="question-1" class="hidden animate__animated animate__fadeIn">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-pink-500">Pertanyaan 1/5</span>
+            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800">Kalau aku bilang "Aku Suka Kamu"...</h2>
+          <p class="text-gray-600 mt-2">...apa hal pertama yang akan kamu lakukan?</p>
+          <div class="mt-6 space-y-3">
+            <button onclick="nextQuestion(1, 1)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
+              <span>Kabur sambil teriak "Hiiiyyyy!!!" 🏃‍♀️</span>
+            </button>
+            <button onclick="nextQuestion(1, 2)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
+              <span>Tanya "Seriusan? Jangan bercanda ya" 🤨</span>
+            </button>
+            <button onclick="nextQuestion(1, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
+              <span> Langsung jawab "Aku juga!" dari lubuk hatiku. 🤗❤️</span>
+            </button>
+            <button onclick="nextQuestion(1, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
+              <span>Bilang "Aku juga suka... sebagai teman" 😊</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div id="question-2" class="hidden animate__animated animate__fadeIn">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-pink-500">Pertanyaan 2/5</span>
+            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800">Menurut kamu...</h2>
+          <p class="text-gray-600 mt-2">...aku ini tipe pasangan seperti apa?</p>
+          <div class="mt-6 space-y-3">
+            <button onclick="nextQuestion(2, 2)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
+              <span>Mungkin oke, tapi belum tahu juga</span>
+            </button>
+            <button onclick="nextQuestion(2, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
+              <span>Sempurna! Aku selalu memimpikan orang sepertimu ✨</span>
+            </button>
+            <button onclick="nextQuestion(2, 1)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
+              <span>Bukan tipeku, maaf... 😅</span>
+            </button>
+            <button onclick="nextQuestion(2, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
+              <span>Setia dan penyayang, cocok buat hubungan serius 💍</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="question-3" class="hidden animate__animated animate__fadeIn">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-pink-500">Pertanyaan 3/5</span>
+            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800">Kalau aku ajak kencan...</h2>
+          <p class="text-gray-600 mt-2">...ke mana tempat ideal menurut kamu?</p>
+          <div class="mt-6 space-y-3">
+            <button onclick="nextQuestion(3, 1)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
+              <span>Di neraka mungkin? 🔥</span>
+            </button>
+            <button onclick="nextQuestion(3, 2)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
+              <span>Kafe biasa aja, asal temenan</span>
+            </button>
+            <button onclick="nextQuestion(3, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
+              <span>Pantai saat sunset, romantis banget 🌅</span>
+            </button>
+            <button onclick="nextQuestion(3, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
+              <span>Di mana saja, yang penting sama kamu! ❤️ + ✈️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div id="question-4" class="hidden animate__animated animate__fadeIn">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-pink-500">Pertanyaan 4/5</span>
+            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800">Aku punya pertanyaan serius...</h2>
+          <p class="text-gray-600 mt-2">...apa kamu pernah memikirkan aku?</p>
+          <div class="mt-6 space-y-3">
+            <button onclick="nextQuestion(4, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
+              <span>Setiap hari! Kamu selalu ada di pikiranku 💭</span>
+            </button>
+            <button onclick="nextQuestion(4, 1)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
+              <span>Nggak pernah, sorry ya 😬</span>
+            </button>
+            <button onclick="nextQuestion(4, 2)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
+              <span>Kadang-kadang, tapi cuma sekilas</span>
+            </button>
+            <button onclick="nextQuestion(4, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
+              <span>Sering, aku penasaran sama kamu 🤔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div id="question-5" class="hidden animate__animated animate__fadeIn">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-pink-500">Pertanyaan 5/5</span>
+            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800">Pertanyaan terakhir...</h2>
+          <p class="text-gray-600 mt-2">...apa kamu mau jadi pacar aku?</p>
+          <div class="mt-6 space-y-3">
+            <button onclick="showResult(1)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
+              <span>Nggak mau, maaf ya 🙅‍♀️</span>
+            </button>
+            <button onclick="showResult(4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
+              <span>IYA! Aku dari dulu suka sama kamu! ❤️🔥</span>
+            </button>
+            <button onclick="showResult(2)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
+              <span>Bisa kita coba kenalan dulu lebih dalam</span>
+            </button>
+            <button onclick="showResult(3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+              <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
+              <span>Iya, aku tertarik sama kamu 😊</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="hidden flex flex-col items-center justify-center py-12">
+          <div class="w-16 h-16 border-4 border-pink-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p class="text-gray-600">Menganalisis jawabanmu...</p>
+          <p class="text-sm text-gray-400 mt-2">Ini penting banget buat aku ❤️</p>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden text-center py-8">
+          <!-- Bad Result -->
+          <div id="bad-result" class="hidden animate__animated animate__fadeIn">
+            <div class="text-7xl mb-4 animate__animated animate__headShake">😢</div>
+            <h2 class="text-2xl font-bold text-gray-800">Ouch... sakit hati aku</h2>
+            <div class="bg-rose-50 border border-rose-200 rounded-xl p-4 mt-6 text-left">
+              <p class="text-gray-700">Aku terima jawaban kamu dengan lapang dada.</p>
+              <p class="text-gray-700 mt-2">Tapi boleh nggak kita tetap berteman?</p>
+              <p class="text-rose-500 font-medium mt-3">Aku janji nggak akan canggung kok!</p>
+            </div>
+            <button onclick="restartQuiz()" class="mt-6 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">Coba Lagi</button>
+          </div>
+
+          <!-- Neutral Result -->
+          <div id="neutral-result" class="hidden animate__animated animate__fadeIn">
+            <div class="text-7xl mb-4 animate__animated animate__pulse">🤔</div>
+            <h2 class="text-2xl font-bold text-gray-800">Hmm... menarik!</h2>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-6 text-left">
+              <p class="text-gray-700">Kayaknya kamu masih ragu-ragu ya?</p>
+              <p class="text-gray-700 mt-2">Gimana kalau kita kenalan lebih dekat dulu?</p>
+              <p class="text-blue-500 font-medium mt-3">Aku janji akan jadi versi terbaik untuk kamu!</p>
+            </div>
+            <button
+              onclick="showConfession()"
+              class="mt-6 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+              Lanjut Yuk!
+            </button>
+          </div>
+
+          <!-- Good Result -->
+          <div id="good-result" class="hidden animate__animated animate__fadeIn">
+            <div class="text-7xl mb-4 animate__animated animate__heartBeat">😊</div>
+            <h2 class="text-2xl font-bold text-gray-800">Yeay! Aku seneng banget!</h2>
+            <div class="bg-pink-50 border border-pink-200 rounded-xl p-4 mt-6 text-left">
+              <p class="text-gray-700">Jujur aja, aku udah lama suka sama kamu.</p>
+              <p class="text-gray-700 mt-2">Aku nggak memaksa kamu harus langsung menerima aku.</p>
+              <p class="text-pink-500 font-medium mt-3">Tapi boleh nggak aku mencoba membuatmu bahagia?</p>
+            </div>
+            <button
+              onclick="showConfession()"
+              class="mt-6 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Aku Mau Tau Lebih...
+            </button>
+          </div>
+
+          <!-- Perfect Result -->
+          <div id="perfect-result" class="hidden animate__animated animate__fadeIn">
+            <div class="heartbeat float inline-block text-7xl mb-4 animate__animated animate__rubberBand">💘</div>
+            <h2 class="text-2xl font-bold text-gray-800">AAAAK AKU GAK SABAR!</h2>
+            <div class="bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-200 rounded-xl p-4 mt-6 text-left glow">
+              <p class="text-gray-700">Beneran nih kamu juga suka sama aku? 😳</p>
+              <p class="text-gray-700 mt-2">Aku udah naksir kamu dari lama banget!</p>
+              <p class="text-pink-500 font-bold mt-3">Gimana kalau kita jadian? Aku janji akan jadi pacar terbaik untuk kamu! 💍</p>
+            </div>
+            <button
+              onclick="showConfession()"
+              class="mt-6 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg animate__animated animate__pulse animate__infinite"
+            >
+              IYA AKU MAU! ❤️
+            </button>
+          </div>
+        </div>
+
+        <!-- Confession Screen -->
+        <div id="confession-screen" class="hidden text-center py-8 px-4 animate__animated animate__fadeIn">
+          <div class="heartbeat float inline-block text-7xl mb-4">💌</div>
+          <h2 class="text-2xl font-bold text-gray-800">Untuk <span id="final-name" class="text-rose-500">Kamu</span>...</h2>
+
+          <div class="bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-200 rounded-xl p-6 mt-6 text-left relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute -top-4 -right-4 w-12 h-12 bg-pink-200 rounded-full opacity-20"></div>
+            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-rose-200 rounded-full opacity-20"></div>
+
+            <p class="text-gray-700 relative z-10">Aku nggak bisa bohong lagi...</p>
+            <p class="text-gray-700 mt-3 relative z-10">Aku suka sama kamu. Bukan main-main atau iseng. Beneran.</p>
+            <p class="text-gray-700 mt-3 relative z-10">Setiap hari aku nunggu chat kamu. Setiap ketemu, jantung aku deg-degan.</p>
+            <p class="text-gray-700 mt-3 relative z-10">Aku nggak memaksa kamu harus membalas perasaan aku.</p>
+            <p class="text-pink-500 font-bold mt-4 relative z-10">Tapi kalau kamu mau kasih kesempatan... aku janji akan buat kamu bahagia setiap hari! 🌈</p>
+
+            <!-- Signature -->
+            <div class="mt-6 pt-4 border-t border-pink-200 text-right">
+              <p class="text-gray-600">Dengan cinta,</p>
+              <p class="text-pink-500 font-bold">[AMZ]</p>
+            </div>
+          </div>
+
+          <button onclick="restartQuiz()" class="mt-6 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">Kembali ke Awal</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentQuestion = 0;
+      let score = 0;
+      let userName = "";
+
+      function startQuiz() {
+        userName = document.getElementById("name-input").value.trim();
+        if (userName === "") {
+          alert("Masukkan nama kamu dulu ya!");
+          return;
+        }
+
+        // Update name in questions
+        document.getElementById("crush-name").textContent = userName;
+
+        document.getElementById("intro-screen").classList.add("hidden");
+        document.getElementById("question-1").classList.remove("hidden");
+        currentQuestion = 1;
+        updateProgressBar();
+      }
+
+      function nextQuestion(questionNum, selectedScore) {
+        score += selectedScore;
+        document.getElementById("score-display").textContent = score;
+
+        document.getElementById(`question-${questionNum}`).classList.add("hidden");
+
+        if (questionNum < 5) {
+          currentQuestion = questionNum + 1;
+          document.getElementById(`question-${currentQuestion}`).classList.remove("hidden");
+          updateProgressBar();
+        }
+      }
+
+      function updateProgressBar() {
+        const progress = (currentQuestion / 5) * 100;
+        document.getElementById("quiz-progress").style.width = `${progress}%`;
+      }
+
+      function showResult(lastScore) {
+        score += lastScore;
+        document.getElementById("question-5").classList.add("hidden");
+        document.getElementById("loading-screen").classList.remove("hidden");
+        updateProgressBar();
+
+        // Simulate loading
+        setTimeout(() => {
+          document.getElementById("loading-screen").classList.add("hidden");
+          document.getElementById("result-screen").classList.remove("hidden");
+
+          if (score <= 10) {
+            document.getElementById("bad-result").classList.remove("hidden");
+          } else if (score <= 15) {
+            document.getElementById("neutral-result").classList.remove("hidden");
+          } else if (score <= 19) {
+            document.getElementById("good-result").classList.remove("hidden");
+          } else {
+            document.getElementById("perfect-result").classList.remove("hidden");
+          }
+        }, 2000);
+      }
+
+      function showConfession() {
+        document.getElementById("result-screen").classList.add("hidden");
+        document.getElementById("final-name").textContent = userName;
+        document.getElementById("confession-screen").classList.remove("hidden");
+      }
+
+      function restartQuiz() {
+        currentQuestion = 0;
+        score = 0;
+
+        // Hide all screens
+        document.querySelectorAll('[id^="question-"], #result-screen, #confession-screen, #loading-screen').forEach((el) => {
+          el.classList.add("hidden");
+        });
+
+        // Reset progress bar
+        document.getElementById("quiz-progress").style.width = "0%";
+
+        // Hide all result types
+        document.querySelectorAll("#result-screen > div").forEach((el) => {
+          el.classList.add("hidden");
+        });
+
+        // Show intro screen
+        document.getElementById("intro-screen").classList.remove("hidden");
+      }
+    </script>
   </body>
 </html>
