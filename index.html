@@ -102,6 +102,15 @@
         height: 6px;
         transition: width 0.5s ease;
       }
+      .score-display {
+        background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+        border-radius: 20px;
+        padding: 2px 10px;
+        font-weight: bold;
+        color: #d81b60;
+        border: 1px solid #f48fb1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
     </style>
   </head>
   <body class="flex items-center justify-center p-4">
@@ -152,9 +161,9 @@
 
         <!-- Question 1 -->
         <div id="question-1" class="hidden animate__animated animate__fadeIn">
-          <div class="flex justify-between items-center mb-2">
+          <div class="flex justify-between items-center mb-4">
             <span class="text-sm font-medium text-pink-500">Pertanyaan 1/5</span>
-            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+            <span class="score-display text-xs">Skor: <span class="current-score">0</span></span>
           </div>
           <h2 class="text-xl font-bold text-gray-800">Kalau aku bilang "Aku Suka Kamu"...</h2>
           <p class="text-gray-600 mt-2">...apa hal pertama yang akan kamu lakukan?</p>
@@ -167,7 +176,7 @@
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
               <span>Tanya "Seriusan? Jangan bercanda ya" 🤨</span>
             </button>
-            <button onclick="nextQuestion(1, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(1, 5)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
               <span> Langsung jawab "Aku juga!" dari lubuk hatiku. 🤗❤️</span>
             </button>
@@ -180,9 +189,9 @@
 
         <!-- Question 2 -->
         <div id="question-2" class="hidden animate__animated animate__fadeIn">
-          <div class="flex justify-between items-center mb-2">
+          <div class="flex justify-between items-center mb-4">
             <span class="text-sm font-medium text-pink-500">Pertanyaan 2/5</span>
-            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+            <span class="score-display text-xs">Skor: <span class="current-score">0</span></span>
           </div>
           <h2 class="text-xl font-bold text-gray-800">Menurut kamu...</h2>
           <p class="text-gray-600 mt-2">...aku ini tipe pasangan seperti apa?</p>
@@ -191,7 +200,7 @@
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
               <span>Mungkin oke, tapi belum tahu juga</span>
             </button>
-            <button onclick="nextQuestion(2, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(2, 5)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
               <span>Sempurna! Aku selalu memimpikan orang sepertimu ✨</span>
             </button>
@@ -199,7 +208,7 @@
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
               <span>Bukan tipeku, maaf... 😅</span>
             </button>
-            <button onclick="nextQuestion(2, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(2, 5)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
               <span>Setia dan penyayang, cocok buat hubungan serius 💍</span>
             </button>
@@ -208,9 +217,9 @@
 
         <!-- Question 3 -->
         <div id="question-3" class="hidden animate__animated animate__fadeIn">
-          <div class="flex justify-between items-center mb-2">
+          <div class="flex justify-between items-center mb-4">
             <span class="text-sm font-medium text-pink-500">Pertanyaan 3/5</span>
-            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+            <span class="score-display text-xs">Skor: <span class="current-score">0</span></span>
           </div>
           <h2 class="text-xl font-bold text-gray-800">Kalau aku ajak kencan...</h2>
           <p class="text-gray-600 mt-2">...ke mana tempat ideal menurut kamu?</p>
@@ -223,11 +232,11 @@
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">B</span>
               <span>Kafe biasa aja, asal temenan</span>
             </button>
-            <button onclick="nextQuestion(3, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(3, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
               <span>Pantai saat sunset, romantis banget 🌅</span>
             </button>
-            <button onclick="nextQuestion(3, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(3, 5)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
               <span>Di mana saja, yang penting sama kamu! ❤️ + ✈️</span>
             </button>
@@ -236,14 +245,14 @@
 
         <!-- Question 4 -->
         <div id="question-4" class="hidden animate__animated animate__fadeIn">
-          <div class="flex justify-between items-center mb-2">
+          <div class="flex justify-between items-center mb-4">
             <span class="text-sm font-medium text-pink-500">Pertanyaan 4/5</span>
-            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+            <span class="score-display text-xs">Skor: <span class="current-score">0</span></span>
           </div>
           <h2 class="text-xl font-bold text-gray-800">Aku punya pertanyaan serius...</h2>
           <p class="text-gray-600 mt-2">...apa kamu pernah memikirkan aku?</p>
           <div class="mt-6 space-y-3">
-            <button onclick="nextQuestion(4, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(4, 5)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">A</span>
               <span>Setiap hari! Kamu selalu ada di pikiranku 💭</span>
             </button>
@@ -255,7 +264,7 @@
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">C</span>
               <span>Kadang-kadang, tapi cuma sekilas</span>
             </button>
-            <button onclick="nextQuestion(4, 3)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
+            <button onclick="nextQuestion(4, 4)" class="w-full text-left bg-gray-50 hover:bg-pink-50 border border-gray-200 rounded-xl p-4 transition-all duration-200 hover:border-pink-300 hover:shadow-sm flex items-start">
               <span class="bg-gray-200 text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">D</span>
               <span>Sering, aku penasaran sama kamu 🤔</span>
             </button>
@@ -264,9 +273,9 @@
 
         <!-- Question 5 -->
         <div id="question-5" class="hidden animate__animated animate__fadeIn">
-          <div class="flex justify-between items-center mb-2">
+          <div class="flex justify-between items-center mb-4">
             <span class="text-sm font-medium text-pink-500">Pertanyaan 5/5</span>
-            <span class="text-xs text-gray-500">Skor: <span id="score-display">0</span></span>
+            <span class="score-display text-xs">Skor: <span class="current-score">0</span></span>
           </div>
           <h2 class="text-xl font-bold text-gray-800">Pertanyaan terakhir...</h2>
           <p class="text-gray-600 mt-2">...apa kamu mau jadi pacar aku?</p>
@@ -375,7 +384,7 @@
 
             <p class="text-gray-700 relative z-10">Aku nggak bisa bohong lagi...</p>
             <p class="text-gray-700 mt-3 relative z-10">Aku suka sama kamu. Bukan main-main atau iseng. Beneran.</p>
-            <p class="text-gray-700 mt-3 relative z-10">Setiap hari aku nunggu chat kamu. Setiap ketemu, jantung aku deg-degan.</p>
+            <p class="text-gray-700 mt-3 relative z-10">Setiap ketemu, jantung aku deg-degan.</p>
             <p class="text-gray-700 mt-3 relative z-10">Aku nggak memaksa kamu harus membalas perasaan aku.</p>
             <p class="text-pink-500 font-bold mt-4 relative z-10">Tapi kalau kamu mau kasih kesempatan... aku janji akan buat kamu bahagia setiap hari! 🌈</p>
 
@@ -385,7 +394,6 @@
               <p class="text-pink-500 font-bold">[AMZ]</p>
             </div>
           </div>
-
           <button onclick="restartQuiz()" class="mt-6 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">Kembali ke Awal</button>
         </div>
       </div>
@@ -410,11 +418,11 @@
         document.getElementById("question-1").classList.remove("hidden");
         currentQuestion = 1;
         updateProgressBar();
+        updateScoreDisplay();
       }
 
       function nextQuestion(questionNum, selectedScore) {
         score += selectedScore;
-        document.getElementById("score-display").textContent = score;
 
         document.getElementById(`question-${questionNum}`).classList.add("hidden");
 
@@ -423,6 +431,18 @@
           document.getElementById(`question-${currentQuestion}`).classList.remove("hidden");
           updateProgressBar();
         }
+
+        updateScoreDisplay();
+      }
+
+      function updateScoreDisplay() {
+        document.querySelectorAll(".current-score").forEach((el) => {
+          el.textContent = score;
+          el.classList.add("animate__animated", "animate__pulse");
+          setTimeout(() => {
+            el.classList.remove("animate__animated", "animate__pulse");
+          }, 1000);
+        });
       }
 
       function updateProgressBar() {
@@ -435,6 +455,7 @@
         document.getElementById("question-5").classList.add("hidden");
         document.getElementById("loading-screen").classList.remove("hidden");
         updateProgressBar();
+        updateScoreDisplay();
 
         // Simulate loading
         setTimeout(() => {
@@ -478,6 +499,9 @@
 
         // Show intro screen
         document.getElementById("intro-screen").classList.remove("hidden");
+
+        // Reset score display
+        updateScoreDisplay();
       }
     </script>
   </body>
